@@ -1,0 +1,65 @@
+﻿@model Modelos.Solicitud
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+        <h2 style="text-align:center;">DETALLE DE SALA</h2>
+    </div>
+</div>
+<div>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Fecha inicio</th>
+                    <td> @Html.DisplayFor(model => model.FechaInicio)</td>
+
+                </tr>
+                <tr>
+                    <th>Fecha fin</th>
+                    <td> @Html.DisplayFor(model => model.FechaFinal)</td>
+
+                </tr>
+                <tr>
+                    <th>Hora inico</th>
+                    <td> @Html.DisplayFor(model => model.HoraInicio)</td>
+
+                </tr>
+                <tr>
+                    <th>Hora fin</th>
+                    <td> @Html.DisplayFor(model => model.HoraFinal)</td>
+
+                </tr>
+                <tr>
+                    <th>Nombre Materia</th>
+                    <td> @Html.DisplayFor(model => model.Materia.NombreMateria)</td>
+
+                </tr>
+                <tr>
+                    <th>Sala</th>
+                    <td> @Html.DisplayFor(model => model.Sala.Salas)</td>
+
+                </tr>
+                <tr>
+                    <th>Estado</th>
+                    <td> @Html.DisplayFor(model => model.EstadoSolicitud)</td>
+
+                </tr>
+                <tr>
+                    <th>Creación</th>
+                    <td> @Html.DisplayFor(model => model.Creacion)</td>
+
+                </tr>
+                <tr>
+                    <th>Modificación</th>
+                    <td> @Html.DisplayFor(model => model.Modificacion)</td>
+
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>

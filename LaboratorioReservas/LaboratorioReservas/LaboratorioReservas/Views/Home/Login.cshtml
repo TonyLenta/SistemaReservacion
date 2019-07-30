@@ -1,0 +1,68 @@
+﻿@model Modelos.Usuario
+@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
+    <meta name="author" content="GeeksLabs">
+    <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+    <link rel="shortcut icon" href="~/Content/img/favicon.png">
+
+    <title>Login Page 2 | Creative - Bootstrap 3 Responsive Admin Template</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
+    <!-- bootstrap theme -->
+    <link href="~/Content/css/bootstrap-theme.css" rel="stylesheet">
+    <!--external css-->
+    <!-- font icon -->
+    <link href="~/Content/css/elegant-icons-style.css" rel="stylesheet" />
+    <link href="~/Content/css/font-awesome.css" rel="stylesheet" />
+    <!-- Custom styles -->
+    <link href="~/Content/css/style.css" rel="stylesheet">
+    <link href="~/Content/css/style-responsive.css" rel="stylesheet" />
+</head>
+
+<body class="login-img3-body">
+
+    <div class="container">
+            @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { @class = "login-form" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="login-wrap">
+                    <p style="text-align:center;" class="login-img"><i class="icon_lock_alt"></i>Iniciar</p>
+                    <div class="input-group">
+                        @Html.EditorFor(model => model.NombreUsuario, new { htmlAttributes = new { type = "text", @class = "form-control", placeholder = "Username", autofocus = "autofocus" } })
+                        <span class="input-group-addon"><i class="icon_profile"></i></span>
+                    </div>
+                    <div class="input-group">
+                        @Html.EditorFor(model => model.Contrasena, new { htmlAttributes = new { type = "password", @class = "form-control", placeholder = "Password", autofocus = "autofocus" } })
+                        <span class="input-group-addon"><i class="icon_key_alt"></i></span>
+                    </div>
+                    <label class="checkbox">
+                        @if (ViewBag.Message != null)
+                        {
+                            <div class="alert alert-danger">
+                                <strong>ERROR!</strong> @ViewBag.Message
+                            </div>
+                        }
+                        <span class="pull-right"> <a href="~/Home/Restablecer"> Olvidaste Tu Contraseña?</a></span>
+                    </label>
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+                </div>
+            }
+    </div>
+
+
+</body>
+
+</html>
+
+

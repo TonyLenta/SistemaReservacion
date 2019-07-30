@@ -1,0 +1,256 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
+    <meta name="author" content="GeeksLabs">
+    <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+    <link rel="shortcut icon" href="~/Content/img/favicon.png">
+
+    <title>Creative - Bootstrap Admin Template</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
+    <!-- bootstrap theme -->
+    <link href="~/Content/css/bootstrap-theme.css" rel="stylesheet">
+    <!--external css-->
+    <!-- font icon -->
+    <link href="~/Content/css/elegant-icons-style.css" rel="stylesheet" />
+    <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- full calendar css-->
+    <!-- easy pie chart-->
+    <link href="~/Content/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen" />
+    <!-- owl carousel -->
+    <link rel="stylesheet" href="~/Content/css/owl.carousel.css" type="text/css">
+    <link href="~/Content/css/jquery-jvectormap-1.2.2.css" rel="stylesheet">
+    <!-- Custom styles -->
+    <link href="~/Content/css/widgets.css" rel="stylesheet">
+    <link href="~/Content/css/style.css" rel="stylesheet">
+    <link href="~/Content/css/style-responsive.css" rel="stylesheet" />
+    <link href="~/Content/css/xcharts.min.css" rel=" stylesheet">
+    <link href="~/Content/css/jquery-ui-1.10.4.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+</head>
+
+<body>
+    <!-- container section start -->
+    <section id="container" class="">
+
+
+        <header class="header dark-bg">
+            <div class="toggle-nav">
+                <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
+            </div>
+
+            <!--logo start-->
+            <a href="index.html" class="logo">LAB <span class="lite">PUCESE</span></a>
+            <!--logo end-->
+
+
+            <div class="top-nav notification-row">
+                <!-- notificatoin dropdown start-->
+                <ul class="nav pull-right top-menu">
+                    <!-- user login dropdown start-->
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="profile-ava">
+                                <img alt="" src="~/Content/images/iconoceleste.gif" width="20">
+                            </span>
+                            <span class="username">@Session["UserName"]</span>
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu extended logout">
+                            <div class="log-arrow-up"></div>
+                            <li class="eborder-top">
+                                <a href="~/Usuarios/Perfil/@Session["UserID"]"><i class="icon_profile"></i> Perfil</a>
+                            </li>
+                            <li>
+                                <a href="~/Home/CerrarSession"><i class="icon_key_alt"></i> Cerrar Sesión</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- user login dropdown end -->
+                </ul>
+                <!-- notificatoin dropdown end-->
+            </div>
+        </header>
+        <!--header end-->
+        <!--sidebar start-->
+        <aside>
+            <div id="sidebar" class="nav-collapse ">
+                <!-- sidebar menu start-->
+                <ul class="sidebar-menu">
+                    <li class="active">
+                        <a class="" href="~/Home/UserDashBoard">
+                            <i class="icon_house_alt"></i>
+                            <span>Inicio</span>
+                        </a>
+                    </li>
+                    @if (Session["UserRol"] != null)
+                    {
+                        if (Session["UserRol"].Equals(1))
+                        {
+                            <li class="sub-menu">
+                                <a href="javascript:;" class="">
+                                    <i class="icon_document_alt"></i>
+                                    <span>Administrador</span>
+                                    <span class="menu-arrow arrow_carrot-right"></span>
+                                </a>
+                                <ul class="sub">
+                                    <li><a class="" href="~/Usuarios/Index">Usuario</a></li>
+                                    <li><a class="" href="~/Escuelas/Index">Escuela</a></li>
+                                    <li><a class="" href="~/Materias/Index">Materia</a></li>
+                                    <li><a class="" href="~/Salas/Index">Salas</a></li>
+                                    <li><a class="" href="~/Nivels/Index">Nivels</a></li>
+                                </ul>
+                            </li>
+                        }
+                    }
+                    @if (Session["UserRol"] != null)
+                    {
+                        if (Session["UserRol"].Equals(1) || Session["UserRol"].Equals(2))
+                        {
+                            <li class="sub-menu">
+                                <a href="javascript:;" class="">
+                                    <i class="icon_desktop"></i>
+                                    <span>Solicitud</span>
+                                    <span class="menu-arrow arrow_carrot-right"></span>
+                                </a>
+                                <ul class="sub">
+                                    <li><a class="" href="~/Solicituds/Index">Todas las solicitudes</a></li>
+                                  
+                                </ul>
+                            </li>
+                        }
+                    }
+                    <li>
+                        <a class="" href="~/Pdfs/Index">
+                            <i class="icon_genius"></i>
+                            <span>PDF</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="" href="~/Graficos/Index">
+                            <i class="icon_piechart"></i>
+                            <span>Gráficos</span>
+
+                        </a>
+
+                    </li>
+                    <li>
+                        <a class="" href="~/auditoria/Index">
+                            <i class="icon_plus-box"></i>
+                            <span>Auditorías</span>
+
+                        </a>
+
+                    </li>
+                </ul>
+                <!-- sidebar menu end-->
+            </div>
+        </aside>
+        <!--sidebar end-->
+        <!--main content start-->
+        <section id="main-content">
+            <section class="wrapper">
+                <!--overview start-->
+                @RenderBody()
+            </section>
+        </section>
+        <!--main content end-->
+    </section>
+    <!-- container section start -->
+    <!-- javascripts -->
+    <script src="~/Content/js/jquery.js"></script>
+    <script src="~/Content/js/jquery-ui-1.10.4.min.js"></script>
+    <script src="~/Content/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="~/Content/js/jquery-ui-1.9.2.custom.min.js"></script>
+    <!-- bootstrap -->
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <!-- nice scroll -->
+    <script src="~/Content/js/jquery.scrollTo.min.js"></script>
+    <script src="~/Content/js/jquery.nicescroll.js" type="text/javascript"></script>
+    <!-- charts scripts -->
+    <script src="~/Content/assets/jquery-knob/js/jquery.knob.js"></script>
+    <script src="~/Content/js/jquery.sparkline.js" type="text/javascript"></script>
+    <script src="~/Content/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
+    <script src="~/Content/js/owl.carousel.js"></script>
+    <!-- jQuery full calendar -->
+    <
+    <script src="~/Content/js/fullcalendar.min.js"></script>
+    <!-- Full Google Calendar - Calendar -->
+    <script src="~/Content/assets/fullcalendar/fullcalendar/fullcalendar.js"></script>
+    <!--script for this page only-->
+    <script src="~/Content/js/calendar-custom.js"></script>
+    <script src="~/Content/js/jquery.rateit.min.js"></script>
+    <!-- custom select -->
+    <script src="~/Content/js/jquery.customSelect.min.js"></script>
+    <script src="~/Content/assets/chart-master/Chart.js"></script>
+
+    <!--custome script for all page-->
+    <script src="~/Content/js/scripts.js"></script>
+    <!-- custom script for this page-->
+    <script src="~/Content/js/sparkline-chart.js"></script>
+    <script src="~/Content/js/easy-pie-chart.js"></script>
+    <script src="~/Content/js/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="~/Content/js/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="~/Content/js/xcharts.min.js"></script>
+    <script src="~/Content/js/jquery.autosize.min.js"></script>
+    <script src="~/Content/js/jquery.placeholder.min.js"></script>
+    <script src="~/Content/js/gdp-data.js"></script>
+    <script src="~/Content/js/morris.min.js"></script>
+    <script src="~/Content/js/sparklines.js"></script>
+    <script src="~/Content/js/charts.js"></script>
+    <script src="~/Content/js/jquery.slimscroll.min.js"></script>
+    <script>
+        //knob
+        $(function () {
+            $(".knob").knob({
+                'draw': function () {
+                    $(this.i).val(this.cv + '%')
+                }
+            })
+        });
+
+        //carousel
+        $(document).ready(function () {
+            $("#owl-slider").owlCarousel({
+                navigation: true,
+                slideSpeed: 300,
+                paginationSpeed: 400,
+                singleItem: true
+
+            });
+        });
+
+        //custom select box
+
+        $(function () {
+            $('select.styled').customSelect();
+        });
+
+        /* ---------- Map ---------- */
+        $(function () {
+            $('#map').vectorMap({
+                map: 'world_mill_en',
+                series: {
+                    regions: [{
+                        values: gdpData,
+                        scale: ['#000', '#000'],
+                        normalizeFunction: 'polynomial'
+                    }]
+                },
+                backgroundColor: '#eef3f7',
+                onLabelShow: function (e, el, code) {
+                    el.html(el.html() + ' (GDP - ' + gdpData[code] + ')');
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "UserDashBoard";
+}
+
+<body>
+    <div class="container">
+        <h1 style="text-align:center;">PONTIFICIA UNIVERSIDAD CATÓLICA DEL ECUADOR</h1>
+        <h3 style="text-align:center;">"SEDE ESMERALDAS"</h3>
+        <center><img src="~/Content/images/iconoceleste.gif" width="190" height="200" /></center>
+        @if (Session["UserName"] != null)
+        {
+            <h1 style="text-align:center;">
+                Sistema de Reserva de Laboratorio <br />
+                <h4 class="text-center"><span class="label label-primary">@Session["UserNames"] @Session["UserRol"]</span></h4>
+            </h1>
+        }
+    </div>
+</body>
+

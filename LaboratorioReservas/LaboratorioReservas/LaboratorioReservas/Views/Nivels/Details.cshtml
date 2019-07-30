@@ -1,0 +1,35 @@
+﻿@model Modelos.Nivel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+        <h2 style="text-align:center;">DETALLE DE USUARIO</h2>
+    </div>
+</div>
+
+<div>
+
+    <div>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Nivel1)</th>
+                        <th>@Html.DisplayNameFor(model => model.Creacion)</th>
+                        <th>@Html.DisplayNameFor(model => model.Modificacion) </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td> @Html.DisplayFor(model => model.Nivel1)</td>
+                        <td> @Html.DisplayFor(model => model.Creacion)</td>
+                        <td> @Html.DisplayFor(model => model.Modificacion)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

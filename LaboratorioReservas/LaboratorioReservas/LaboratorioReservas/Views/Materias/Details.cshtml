@@ -1,0 +1,41 @@
+﻿@model Modelos.Materia
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+        <h2 style="text-align:center;">MOSTRAR MATERIA</h2>
+    </div>
+</div>
+<div>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.NombreMateria)</th>
+                    <th>Usuario</th>
+                    <th>Escuela</th>
+                    <th>Nivel</th>
+                    <th>@Html.DisplayNameFor(model => model.Creacion)</th>
+                    <th>@Html.DisplayNameFor(model => model.Modificacion) </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td> @Html.DisplayFor(model => model.NombreMateria)</td>
+                    <td> @Html.DisplayFor(model => model.Usuario.Nombres)</td>
+                    <td> @Html.DisplayFor(model => model.Escuela.NombreEscuela)</td>
+                    <td> @Html.DisplayFor(model => model.Nivel.NivelId)</td>
+                    <td> @Html.DisplayFor(model => model.Creacion)</td>
+                    <td> @Html.DisplayFor(model => model.Modificacion)</td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            @Html.ActionLink("Atrás", "Index")
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,41 @@
+﻿@model Modelos.Sala
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+        <h2 style="text-align:center;">CREAR SALA</h2>
+        @if (@ViewBag.Message != null)
+        {
+            <div style="border: 1px solid red">
+                @ViewBag.Message
+            </div>
+        }
+    </div>
+</div>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Salas, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Salas, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                @Html.ValidationMessageFor(model => model.Salas, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" align="center">
+            <button type="submit" class="btn-primary btn">
+                <span class="glyphicon glyphicon-floppy-saved">GUARDAR</span>
+            </button>
+        </div>
+    </div>
+}

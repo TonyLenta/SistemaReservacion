@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Modelos.Auditoria>
+@{
+                /**/
+
+                ViewBag.Title = "Index";
+}
+<div class="container-fluid">
+    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+        <div class="form-group" align="center">
+            <img src="~/Content/img/pdf.png" width="100" height="100">
+            <h3 class="text-center">PONTIFICIA UNIVERSIDAD CATOLICA DEL ECUADOR<br />SEDE-ESMERALDAS</h3>
+            <h4 class="text-center">REPORTES</h4>
+        </div>
+    </div>
+
+    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+
+        <div class="panel panel-info panel-table">
+            <div class="panel-heading">Auditorias</div>
+            <div class="panel-body">
+                <table class="table table-striped table-bordered table-list table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Tipo</th>
+                            <th>Descargas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Descargar Auditorias</td>
+                            <td>
+                                <a href="@Url.Action("ExportPDFAuditorias","PDFs")" target="_blank"><center> <img width="50" height="50" src="~/Content/img/file_pdf.png" /></center></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Descargar escuelas</td>
+                            <td>
+                                <a href="@Url.Action("ExportPDFEscuelas","PDFs")" target="_blank"><center><img width="50" height="50" src="~/Content/img/file_pdf.png" /></center></a>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Descargar materias</td>
+                            <td>
+                                <a href="@Url.Action("ExportPDFMaterias","PDFs")" target="_blank"><center><img width="50" height="50" src="~/Content/img/file_pdf.png" /></center></a>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Descargar niveles</td>
+                            <td>
+                                <a href="@Url.Action("ExportPDFNiveles","PDFs")" target="_blank"><center><img width="50" height="50" src="~/Content/img/file_pdf.png" /></center></a>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Descargar salas</td>
+                            <td>
+                                <a href="@Url.Action("ExportPDFSalas","PDFs")" target="_blank"><center><img width="50" height="50" src="~/Content/img/file_pdf.png" /></center></a>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Descargar solicitudes</td>
+                            <td>
+                                <a href="@Url.Action("ExportPDFSolicitudes","PDFs")" target="_blank"><center><img width="50" height="50" src="~/Content/img/file_pdf.png" /></center></a>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Descargar usuarios</td>
+                            <td>
+                                <a href="@Url.Action("ExportPDFUsuarios","PDFs")" target="_blank"><center><img width="50" height="50" src="~/Content/img/file_pdf.png" /></center></a>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,105 @@
+﻿@model IEnumerable<Modelos.Solicitud>
+@{
+    ViewBag.Title = "Solicitud";
+    Layout = null;
+
+}
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                <div class="form-group" align="center">
+                    <img src="~/Content/iconoceleste.gif" width="100" height="100">
+                    <h3 class="text-center">PONTIFICIA UNIVERSIDAD CATOLICA DEL ECUADOR</h3>
+                    <h4 class="text-center">SEDE-ESMERALDAS</h4>
+                </div>
+            </div>
+
+            <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">SOLICITUDES</div>
+                    <div class="panel-body">
+
+                        <table class="table table-striped table-bordered table-list table-responsive">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.FechaInicio)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.FechaFinal)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.HoraInicio)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.HoraFinal)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Materia.NombreMateria)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Sala.Salas)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.EstadoSolicitud)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Creacion)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Modificacion)
+                                </th>
+                            </tr>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FechaInicio)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FechaFinal)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.HoraInicio)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.HoraFinal)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Materia.NombreMateria)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Sala.Salas)
+                                    </td>
+
+                                    <td>
+                                        @Html.Raw(((@item.EstadoSolicitud == 1) ? "<h4><span class='label label-success'>Activo</span></h4>" : "<h4><span class='label label-warning'>Inactivo</span></h4>"))
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Creacion)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Modificacion)
+                                    </td>
+
+
+                                </tr>
+                            }
+
+                        </table>
+                    </div><!-- /.panel-body -->
+                </div><!-- /.panel panel-default -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

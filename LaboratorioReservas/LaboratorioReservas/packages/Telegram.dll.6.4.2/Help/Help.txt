@@ -1,0 +1,6 @@
+
+1.download NuGet.exe
+in CMD
+2.NuGet.exe spec
+
+3.nuget pack Package.nuspec

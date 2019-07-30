@@ -1,0 +1,701 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LaboratorioReservaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Auditoria">
+          <Key>
+            <PropertyRef Name="AuditoriId" />
+          </Key>
+          <Property Name="AuditoriId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UsuarioId" Type="int" />
+          <Property Name="Detalle" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Accion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Creacion" Type="datetime" />
+          <Property Name="Modificacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Escuela">
+          <Key>
+            <PropertyRef Name="EscuelaId" />
+          </Key>
+          <Property Name="EscuelaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreEscuela" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="EstadoEscuela" Type="tinyint" />
+          <Property Name="Creacion" Type="datetime" />
+          <Property Name="Modificacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Materia">
+          <Key>
+            <PropertyRef Name="MateriaId" />
+          </Key>
+          <Property Name="MateriaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NivelId" Type="int" />
+          <Property Name="EscuelaId" Type="int" />
+          <Property Name="UsuarioId" Type="int" />
+          <Property Name="NombreMateria" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="EstadoMateria" Type="tinyint" />
+          <Property Name="Creacion" Type="datetime" />
+          <Property Name="Modificacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Nivel">
+          <Key>
+            <PropertyRef Name="NivelId" />
+          </Key>
+          <Property Name="NivelId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nivel" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EstadoNivel" Type="tinyint" />
+          <Property Name="Creacion" Type="datetime" />
+          <Property Name="Modificacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Restablecer">
+          <Key>
+            <PropertyRef Name="RestablecerId" />
+          </Key>
+          <Property Name="RestablecerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UsuarioId" Type="int" />
+          <Property Name="NuevaPassword" Type="varchar" MaxLength="50" />
+          <Property Name="Creacion" Type="datetime" />
+          <Property Name="Modificacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="RolesId" />
+          </Key>
+          <Property Name="RolesId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Rol" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Creacion" Type="datetime" />
+          <Property Name="Modificacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Salas">
+          <Key>
+            <PropertyRef Name="SalasId" />
+          </Key>
+          <Property Name="SalasId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Salas" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="EstadoSalas" Type="tinyint" />
+          <Property Name="Creacion" Type="datetime" />
+          <Property Name="Modificacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Solicitud">
+          <Key>
+            <PropertyRef Name="SolicitudId" />
+          </Key>
+          <Property Name="SolicitudId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SalasId" Type="int" />
+          <Property Name="MateriaId" Type="int" />
+          <Property Name="FechaInicio" Type="date" Nullable="false" />
+          <Property Name="FechaFinal" Type="date" Nullable="false" />
+          <Property Name="HoraInicio" Type="time" Precision="7" Nullable="false" />
+          <Property Name="HoraFinal" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Observaciones" Type="varchar" MaxLength="200" />
+          <Property Name="Confirmacion" Type="varchar" MaxLength="200" />
+          <Property Name="EstadoSolicitud" Type="tinyint" />
+          <Property Name="Creacion" Type="datetime" />
+          <Property Name="Modificacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="UsuarioId" />
+          </Key>
+          <Property Name="UsuarioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RolesId" Type="int" />
+          <Property Name="Nombres" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Cedula" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Token" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ChatId" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="NombreUsuario" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Contrasena" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Restablecer" Type="tinyint" />
+          <Property Name="EstadoSesion" Type="tinyint" />
+          <Property Name="EstadoUsuario" Type="tinyint" />
+          <Property Name="Creacion" Type="datetime" />
+          <Property Name="Modificacion" Type="datetime" />
+        </EntityType>
+        <Association Name="FK__Auditoria__Usuar__571DF1D5">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Auditoria" Type="Self.Auditoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Auditoria">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Materia__Escuela__6C190EBB">
+          <End Role="Escuela" Type="Self.Escuela" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Materia" Type="Self.Materia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Escuela">
+              <PropertyRef Name="EscuelaId" />
+            </Principal>
+            <Dependent Role="Materia">
+              <PropertyRef Name="EscuelaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Materia__NivelId__6B24EA82">
+          <End Role="Nivel" Type="Self.Nivel" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Materia" Type="Self.Materia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nivel">
+              <PropertyRef Name="NivelId" />
+            </Principal>
+            <Dependent Role="Materia">
+              <PropertyRef Name="NivelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Materia__Usuario__6D0D32F4">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Materia" Type="Self.Materia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Materia">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Restablec__Usuar__5BE2A6F2">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Restablecer" Type="Self.Restablecer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Restablecer">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Solicitud__Mater__797309D9">
+          <End Role="Materia" Type="Self.Materia" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Solicitud" Type="Self.Solicitud" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materia">
+              <PropertyRef Name="MateriaId" />
+            </Principal>
+            <Dependent Role="Solicitud">
+              <PropertyRef Name="MateriaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Solicitud__Salas__787EE5A0">
+          <End Role="Salas" Type="Self.Salas" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Solicitud" Type="Self.Solicitud" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Salas">
+              <PropertyRef Name="SalasId" />
+            </Principal>
+            <Dependent Role="Solicitud">
+              <PropertyRef Name="SalasId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuario__Modific__52593CB8">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RolesId" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="RolesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LaboratorioReservaModelStoreContainer">
+          <EntitySet Name="Auditoria" EntityType="Self.Auditoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Escuela" EntityType="Self.Escuela" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Materia" EntityType="Self.Materia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nivel" EntityType="Self.Nivel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Restablecer" EntityType="Self.Restablecer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Salas" EntityType="Self.Salas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Solicitud" EntityType="Self.Solicitud" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Auditoria__Usuar__571DF1D5" Association="Self.FK__Auditoria__Usuar__571DF1D5">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Auditoria" EntitySet="Auditoria" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Materia__Escuela__6C190EBB" Association="Self.FK__Materia__Escuela__6C190EBB">
+            <End Role="Escuela" EntitySet="Escuela" />
+            <End Role="Materia" EntitySet="Materia" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Materia__NivelId__6B24EA82" Association="Self.FK__Materia__NivelId__6B24EA82">
+            <End Role="Nivel" EntitySet="Nivel" />
+            <End Role="Materia" EntitySet="Materia" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Materia__Usuario__6D0D32F4" Association="Self.FK__Materia__Usuario__6D0D32F4">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Materia" EntitySet="Materia" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Restablec__Usuar__5BE2A6F2" Association="Self.FK__Restablec__Usuar__5BE2A6F2">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Restablecer" EntitySet="Restablecer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Solicitud__Mater__797309D9" Association="Self.FK__Solicitud__Mater__797309D9">
+            <End Role="Materia" EntitySet="Materia" />
+            <End Role="Solicitud" EntitySet="Solicitud" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Solicitud__Salas__787EE5A0" Association="Self.FK__Solicitud__Salas__787EE5A0">
+            <End Role="Salas" EntitySet="Salas" />
+            <End Role="Solicitud" EntitySet="Solicitud" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuario__Modific__52593CB8" Association="Self.FK__Usuario__Modific__52593CB8">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LaboratorioReservaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Auditoria">
+          <Key>
+            <PropertyRef Name="AuditoriId" />
+          </Key>
+          <Property Name="AuditoriId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UsuarioId" Type="Int32" />
+          <Property Name="Detalle" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Accion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Creacion" Type="DateTime" Precision="3" />
+          <Property Name="Modificacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Auditoria__Usuar__571DF1D5" FromRole="Auditoria" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Escuela">
+          <Key>
+            <PropertyRef Name="EscuelaId" />
+          </Key>
+          <Property Name="EscuelaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreEscuela" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EstadoEscuela" Type="Byte" />
+          <Property Name="Creacion" Type="DateTime" Precision="3" />
+          <Property Name="Modificacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Materias" Relationship="Self.FK__Materia__Escuela__6C190EBB" FromRole="Escuela" ToRole="Materia" />
+        </EntityType>
+        <EntityType Name="Materia">
+          <Key>
+            <PropertyRef Name="MateriaId" />
+          </Key>
+          <Property Name="MateriaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NivelId" Type="Int32" />
+          <Property Name="EscuelaId" Type="Int32" />
+          <Property Name="UsuarioId" Type="Int32" />
+          <Property Name="NombreMateria" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EstadoMateria" Type="Byte" />
+          <Property Name="Creacion" Type="DateTime" Precision="3" />
+          <Property Name="Modificacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Escuela" Relationship="Self.FK__Materia__Escuela__6C190EBB" FromRole="Materia" ToRole="Escuela" />
+          <NavigationProperty Name="Nivel" Relationship="Self.FK__Materia__NivelId__6B24EA82" FromRole="Materia" ToRole="Nivel" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Materia__Usuario__6D0D32F4" FromRole="Materia" ToRole="Usuario" />
+          <NavigationProperty Name="Solicituds" Relationship="Self.FK__Solicitud__Mater__797309D9" FromRole="Materia" ToRole="Solicitud" />
+        </EntityType>
+        <EntityType Name="Nivel">
+          <Key>
+            <PropertyRef Name="NivelId" />
+          </Key>
+          <Property Name="NivelId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nivel1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EstadoNivel" Type="Byte" />
+          <Property Name="Creacion" Type="DateTime" Precision="3" />
+          <Property Name="Modificacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Materias" Relationship="Self.FK__Materia__NivelId__6B24EA82" FromRole="Nivel" ToRole="Materia" />
+        </EntityType>
+        <EntityType Name="Restablecer">
+          <Key>
+            <PropertyRef Name="RestablecerId" />
+          </Key>
+          <Property Name="RestablecerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UsuarioId" Type="Int32" />
+          <Property Name="NuevaPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Creacion" Type="DateTime" Precision="3" />
+          <Property Name="Modificacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Restablec__Usuar__5BE2A6F2" FromRole="Restablecer" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RolesId" />
+          </Key>
+          <Property Name="RolesId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Rol" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Creacion" Type="DateTime" Precision="3" />
+          <Property Name="Modificacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK__Usuario__Modific__52593CB8" FromRole="Roles" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Sala">
+          <Key>
+            <PropertyRef Name="SalasId" />
+          </Key>
+          <Property Name="SalasId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Salas" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EstadoSalas" Type="Byte" />
+          <Property Name="Creacion" Type="DateTime" Precision="3" />
+          <Property Name="Modificacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Solicituds" Relationship="Self.FK__Solicitud__Salas__787EE5A0" FromRole="Salas" ToRole="Solicitud" />
+        </EntityType>
+        <EntityType Name="Solicitud">
+          <Key>
+            <PropertyRef Name="SolicitudId" />
+          </Key>
+          <Property Name="SolicitudId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SalasId" Type="Int32" />
+          <Property Name="MateriaId" Type="Int32" />
+          <Property Name="FechaInicio" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FechaFinal" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="HoraInicio" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="HoraFinal" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Observaciones" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Confirmacion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="EstadoSolicitud" Type="Byte" />
+          <Property Name="Creacion" Type="DateTime" Precision="3" />
+          <Property Name="Modificacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Materia" Relationship="Self.FK__Solicitud__Mater__797309D9" FromRole="Solicitud" ToRole="Materia" />
+          <NavigationProperty Name="Sala" Relationship="Self.FK__Solicitud__Salas__787EE5A0" FromRole="Solicitud" ToRole="Salas" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="UsuarioId" />
+          </Key>
+          <Property Name="UsuarioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RolesId" Type="Int32" />
+          <Property Name="Nombres" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cedula" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Token" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ChatId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NombreUsuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contrasena" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Restablecer" Type="Byte" />
+          <Property Name="EstadoSesion" Type="Byte" />
+          <Property Name="EstadoUsuario" Type="Byte" />
+          <Property Name="Creacion" Type="DateTime" Precision="3" />
+          <Property Name="Modificacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Auditorias" Relationship="Self.FK__Auditoria__Usuar__571DF1D5" FromRole="Usuario" ToRole="Auditoria" />
+          <NavigationProperty Name="Materias" Relationship="Self.FK__Materia__Usuario__6D0D32F4" FromRole="Usuario" ToRole="Materia" />
+          <NavigationProperty Name="Restablecers" Relationship="Self.FK__Restablec__Usuar__5BE2A6F2" FromRole="Usuario" ToRole="Restablecer" />
+          <NavigationProperty Name="Role" Relationship="Self.FK__Usuario__Modific__52593CB8" FromRole="Usuario" ToRole="Roles" />
+        </EntityType>
+        <Association Name="FK__Auditoria__Usuar__571DF1D5">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Auditoria" Type="Self.Auditoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Auditoria">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Materia__Escuela__6C190EBB">
+          <End Role="Escuela" Type="Self.Escuela" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Materia" Type="Self.Materia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Escuela">
+              <PropertyRef Name="EscuelaId" />
+            </Principal>
+            <Dependent Role="Materia">
+              <PropertyRef Name="EscuelaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Materia__NivelId__6B24EA82">
+          <End Role="Nivel" Type="Self.Nivel" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Materia" Type="Self.Materia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nivel">
+              <PropertyRef Name="NivelId" />
+            </Principal>
+            <Dependent Role="Materia">
+              <PropertyRef Name="NivelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Materia__Usuario__6D0D32F4">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Materia" Type="Self.Materia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Materia">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Solicitud__Mater__797309D9">
+          <End Role="Materia" Type="Self.Materia" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Solicitud" Type="Self.Solicitud" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materia">
+              <PropertyRef Name="MateriaId" />
+            </Principal>
+            <Dependent Role="Solicitud">
+              <PropertyRef Name="MateriaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Restablec__Usuar__5BE2A6F2">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Restablecer" Type="Self.Restablecer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Restablecer">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuario__Modific__52593CB8">
+          <End Role="Roles" Type="Self.Role" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RolesId" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="RolesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Solicitud__Salas__787EE5A0">
+          <End Role="Salas" Type="Self.Sala" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Solicitud" Type="Self.Solicitud" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Salas">
+              <PropertyRef Name="SalasId" />
+            </Principal>
+            <Dependent Role="Solicitud">
+              <PropertyRef Name="SalasId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LaboratorioReservaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Auditorias" EntityType="Self.Auditoria" />
+          <EntitySet Name="Escuelas" EntityType="Self.Escuela" />
+          <EntitySet Name="Materias" EntityType="Self.Materia" />
+          <EntitySet Name="Nivels" EntityType="Self.Nivel" />
+          <EntitySet Name="Restablecers" EntityType="Self.Restablecer" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="Salas" EntityType="Self.Sala" />
+          <EntitySet Name="Solicituds" EntityType="Self.Solicitud" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
+          <AssociationSet Name="FK__Auditoria__Usuar__571DF1D5" Association="Self.FK__Auditoria__Usuar__571DF1D5">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Auditoria" EntitySet="Auditorias" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Materia__Escuela__6C190EBB" Association="Self.FK__Materia__Escuela__6C190EBB">
+            <End Role="Escuela" EntitySet="Escuelas" />
+            <End Role="Materia" EntitySet="Materias" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Materia__NivelId__6B24EA82" Association="Self.FK__Materia__NivelId__6B24EA82">
+            <End Role="Nivel" EntitySet="Nivels" />
+            <End Role="Materia" EntitySet="Materias" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Materia__Usuario__6D0D32F4" Association="Self.FK__Materia__Usuario__6D0D32F4">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Materia" EntitySet="Materias" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Solicitud__Mater__797309D9" Association="Self.FK__Solicitud__Mater__797309D9">
+            <End Role="Materia" EntitySet="Materias" />
+            <End Role="Solicitud" EntitySet="Solicituds" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Restablec__Usuar__5BE2A6F2" Association="Self.FK__Restablec__Usuar__5BE2A6F2">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Restablecer" EntitySet="Restablecers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuario__Modific__52593CB8" Association="Self.FK__Usuario__Modific__52593CB8">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Usuario" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Solicitud__Salas__787EE5A0" Association="Self.FK__Solicitud__Salas__787EE5A0">
+            <End Role="Salas" EntitySet="Salas" />
+            <End Role="Solicitud" EntitySet="Solicituds" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LaboratorioReservaModelStoreContainer" CdmEntityContainer="LaboratorioReservaEntities">
+          <EntitySetMapping Name="Auditorias">
+            <EntityTypeMapping TypeName="LaboratorioReservaModel.Auditoria">
+              <MappingFragment StoreEntitySet="Auditoria">
+                <ScalarProperty Name="AuditoriId" ColumnName="AuditoriId" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+                <ScalarProperty Name="Accion" ColumnName="Accion" />
+                <ScalarProperty Name="Creacion" ColumnName="Creacion" />
+                <ScalarProperty Name="Modificacion" ColumnName="Modificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Escuelas">
+            <EntityTypeMapping TypeName="LaboratorioReservaModel.Escuela">
+              <MappingFragment StoreEntitySet="Escuela">
+                <ScalarProperty Name="EscuelaId" ColumnName="EscuelaId" />
+                <ScalarProperty Name="NombreEscuela" ColumnName="NombreEscuela" />
+                <ScalarProperty Name="EstadoEscuela" ColumnName="EstadoEscuela" />
+                <ScalarProperty Name="Creacion" ColumnName="Creacion" />
+                <ScalarProperty Name="Modificacion" ColumnName="Modificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Materias">
+            <EntityTypeMapping TypeName="LaboratorioReservaModel.Materia">
+              <MappingFragment StoreEntitySet="Materia">
+                <ScalarProperty Name="MateriaId" ColumnName="MateriaId" />
+                <ScalarProperty Name="NivelId" ColumnName="NivelId" />
+                <ScalarProperty Name="EscuelaId" ColumnName="EscuelaId" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="NombreMateria" ColumnName="NombreMateria" />
+                <ScalarProperty Name="EstadoMateria" ColumnName="EstadoMateria" />
+                <ScalarProperty Name="Creacion" ColumnName="Creacion" />
+                <ScalarProperty Name="Modificacion" ColumnName="Modificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nivels">
+            <EntityTypeMapping TypeName="LaboratorioReservaModel.Nivel">
+              <MappingFragment StoreEntitySet="Nivel">
+                <ScalarProperty Name="NivelId" ColumnName="NivelId" />
+                <ScalarProperty Name="Nivel1" ColumnName="Nivel" />
+                <ScalarProperty Name="EstadoNivel" ColumnName="EstadoNivel" />
+                <ScalarProperty Name="Creacion" ColumnName="Creacion" />
+                <ScalarProperty Name="Modificacion" ColumnName="Modificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Restablecers">
+            <EntityTypeMapping TypeName="LaboratorioReservaModel.Restablecer">
+              <MappingFragment StoreEntitySet="Restablecer">
+                <ScalarProperty Name="RestablecerId" ColumnName="RestablecerId" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="NuevaPassword" ColumnName="NuevaPassword" />
+                <ScalarProperty Name="Creacion" ColumnName="Creacion" />
+                <ScalarProperty Name="Modificacion" ColumnName="Modificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="LaboratorioReservaModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="RolesId" ColumnName="RolesId" />
+                <ScalarProperty Name="Rol" ColumnName="Rol" />
+                <ScalarProperty Name="Creacion" ColumnName="Creacion" />
+                <ScalarProperty Name="Modificacion" ColumnName="Modificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Salas">
+            <EntityTypeMapping TypeName="LaboratorioReservaModel.Sala">
+              <MappingFragment StoreEntitySet="Salas">
+                <ScalarProperty Name="SalasId" ColumnName="SalasId" />
+                <ScalarProperty Name="Salas" ColumnName="Salas" />
+                <ScalarProperty Name="EstadoSalas" ColumnName="EstadoSalas" />
+                <ScalarProperty Name="Creacion" ColumnName="Creacion" />
+                <ScalarProperty Name="Modificacion" ColumnName="Modificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Solicituds">
+            <EntityTypeMapping TypeName="LaboratorioReservaModel.Solicitud">
+              <MappingFragment StoreEntitySet="Solicitud">
+                <ScalarProperty Name="SolicitudId" ColumnName="SolicitudId" />
+                <ScalarProperty Name="SalasId" ColumnName="SalasId" />
+                <ScalarProperty Name="MateriaId" ColumnName="MateriaId" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="FechaFinal" ColumnName="FechaFinal" />
+                <ScalarProperty Name="HoraInicio" ColumnName="HoraInicio" />
+                <ScalarProperty Name="HoraFinal" ColumnName="HoraFinal" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="Confirmacion" ColumnName="Confirmacion" />
+                <ScalarProperty Name="EstadoSolicitud" ColumnName="EstadoSolicitud" />
+                <ScalarProperty Name="Creacion" ColumnName="Creacion" />
+                <ScalarProperty Name="Modificacion" ColumnName="Modificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="LaboratorioReservaModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="RolesId" ColumnName="RolesId" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="ChatId" ColumnName="ChatId" />
+                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+                <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+                <ScalarProperty Name="Restablecer" ColumnName="Restablecer" />
+                <ScalarProperty Name="EstadoSesion" ColumnName="EstadoSesion" />
+                <ScalarProperty Name="EstadoUsuario" ColumnName="EstadoUsuario" />
+                <ScalarProperty Name="Creacion" ColumnName="Creacion" />
+                <ScalarProperty Name="Modificacion" ColumnName="Modificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

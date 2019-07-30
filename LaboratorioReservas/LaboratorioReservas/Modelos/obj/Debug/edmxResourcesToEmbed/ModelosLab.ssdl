@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LaboratorioReservaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Auditoria">
+    <Key>
+      <PropertyRef Name="AuditoriId" />
+    </Key>
+    <Property Name="AuditoriId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UsuarioId" Type="int" />
+    <Property Name="Detalle" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Accion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Creacion" Type="datetime" />
+    <Property Name="Modificacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Escuela">
+    <Key>
+      <PropertyRef Name="EscuelaId" />
+    </Key>
+    <Property Name="EscuelaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NombreEscuela" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="EstadoEscuela" Type="tinyint" />
+    <Property Name="Creacion" Type="datetime" />
+    <Property Name="Modificacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Materia">
+    <Key>
+      <PropertyRef Name="MateriaId" />
+    </Key>
+    <Property Name="MateriaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NivelId" Type="int" />
+    <Property Name="EscuelaId" Type="int" />
+    <Property Name="UsuarioId" Type="int" />
+    <Property Name="NombreMateria" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="EstadoMateria" Type="tinyint" />
+    <Property Name="Creacion" Type="datetime" />
+    <Property Name="Modificacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Nivel">
+    <Key>
+      <PropertyRef Name="NivelId" />
+    </Key>
+    <Property Name="NivelId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nivel" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="EstadoNivel" Type="tinyint" />
+    <Property Name="Creacion" Type="datetime" />
+    <Property Name="Modificacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Restablecer">
+    <Key>
+      <PropertyRef Name="RestablecerId" />
+    </Key>
+    <Property Name="RestablecerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UsuarioId" Type="int" />
+    <Property Name="NuevaPassword" Type="varchar" MaxLength="50" />
+    <Property Name="Creacion" Type="datetime" />
+    <Property Name="Modificacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="RolesId" />
+    </Key>
+    <Property Name="RolesId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Rol" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Creacion" Type="datetime" />
+    <Property Name="Modificacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Salas">
+    <Key>
+      <PropertyRef Name="SalasId" />
+    </Key>
+    <Property Name="SalasId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Salas" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="EstadoSalas" Type="tinyint" />
+    <Property Name="Creacion" Type="datetime" />
+    <Property Name="Modificacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Solicitud">
+    <Key>
+      <PropertyRef Name="SolicitudId" />
+    </Key>
+    <Property Name="SolicitudId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SalasId" Type="int" />
+    <Property Name="MateriaId" Type="int" />
+    <Property Name="FechaInicio" Type="date" Nullable="false" />
+    <Property Name="FechaFinal" Type="date" Nullable="false" />
+    <Property Name="HoraInicio" Type="time" Precision="7" Nullable="false" />
+    <Property Name="HoraFinal" Type="time" Precision="7" Nullable="false" />
+    <Property Name="Observaciones" Type="varchar" MaxLength="200" />
+    <Property Name="Confirmacion" Type="varchar" MaxLength="200" />
+    <Property Name="EstadoSolicitud" Type="tinyint" />
+    <Property Name="Creacion" Type="datetime" />
+    <Property Name="Modificacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="UsuarioId" />
+    </Key>
+    <Property Name="UsuarioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RolesId" Type="int" />
+    <Property Name="Nombres" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Cedula" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Token" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ChatId" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="NombreUsuario" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Contrasena" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Restablecer" Type="tinyint" />
+    <Property Name="EstadoSesion" Type="tinyint" />
+    <Property Name="EstadoUsuario" Type="tinyint" />
+    <Property Name="Creacion" Type="datetime" />
+    <Property Name="Modificacion" Type="datetime" />
+  </EntityType>
+  <Association Name="FK__Auditoria__Usuar__571DF1D5">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Auditoria" Type="Self.Auditoria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioId" />
+      </Principal>
+      <Dependent Role="Auditoria">
+        <PropertyRef Name="UsuarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Materia__Escuela__6C190EBB">
+    <End Role="Escuela" Type="Self.Escuela" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Materia" Type="Self.Materia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Escuela">
+        <PropertyRef Name="EscuelaId" />
+      </Principal>
+      <Dependent Role="Materia">
+        <PropertyRef Name="EscuelaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Materia__NivelId__6B24EA82">
+    <End Role="Nivel" Type="Self.Nivel" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Materia" Type="Self.Materia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Nivel">
+        <PropertyRef Name="NivelId" />
+      </Principal>
+      <Dependent Role="Materia">
+        <PropertyRef Name="NivelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Materia__Usuario__6D0D32F4">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Materia" Type="Self.Materia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioId" />
+      </Principal>
+      <Dependent Role="Materia">
+        <PropertyRef Name="UsuarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Restablec__Usuar__5BE2A6F2">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Restablecer" Type="Self.Restablecer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioId" />
+      </Principal>
+      <Dependent Role="Restablecer">
+        <PropertyRef Name="UsuarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Solicitud__Mater__797309D9">
+    <End Role="Materia" Type="Self.Materia" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Solicitud" Type="Self.Solicitud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Materia">
+        <PropertyRef Name="MateriaId" />
+      </Principal>
+      <Dependent Role="Solicitud">
+        <PropertyRef Name="MateriaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Solicitud__Salas__787EE5A0">
+    <End Role="Salas" Type="Self.Salas" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Solicitud" Type="Self.Solicitud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Salas">
+        <PropertyRef Name="SalasId" />
+      </Principal>
+      <Dependent Role="Solicitud">
+        <PropertyRef Name="SalasId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Usuario__Modific__52593CB8">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="RolesId" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="RolesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LaboratorioReservaModelStoreContainer">
+    <EntitySet Name="Auditoria" EntityType="Self.Auditoria" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Escuela" EntityType="Self.Escuela" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Materia" EntityType="Self.Materia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Nivel" EntityType="Self.Nivel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Restablecer" EntityType="Self.Restablecer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Salas" EntityType="Self.Salas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Solicitud" EntityType="Self.Solicitud" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Auditoria__Usuar__571DF1D5" Association="Self.FK__Auditoria__Usuar__571DF1D5">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Auditoria" EntitySet="Auditoria" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Materia__Escuela__6C190EBB" Association="Self.FK__Materia__Escuela__6C190EBB">
+      <End Role="Escuela" EntitySet="Escuela" />
+      <End Role="Materia" EntitySet="Materia" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Materia__NivelId__6B24EA82" Association="Self.FK__Materia__NivelId__6B24EA82">
+      <End Role="Nivel" EntitySet="Nivel" />
+      <End Role="Materia" EntitySet="Materia" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Materia__Usuario__6D0D32F4" Association="Self.FK__Materia__Usuario__6D0D32F4">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Materia" EntitySet="Materia" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Restablec__Usuar__5BE2A6F2" Association="Self.FK__Restablec__Usuar__5BE2A6F2">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Restablecer" EntitySet="Restablecer" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Solicitud__Mater__797309D9" Association="Self.FK__Solicitud__Mater__797309D9">
+      <End Role="Materia" EntitySet="Materia" />
+      <End Role="Solicitud" EntitySet="Solicitud" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Solicitud__Salas__787EE5A0" Association="Self.FK__Solicitud__Salas__787EE5A0">
+      <End Role="Salas" EntitySet="Salas" />
+      <End Role="Solicitud" EntitySet="Solicitud" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Usuario__Modific__52593CB8" Association="Self.FK__Usuario__Modific__52593CB8">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

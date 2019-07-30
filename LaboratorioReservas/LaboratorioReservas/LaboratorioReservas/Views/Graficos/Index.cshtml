@@ -1,0 +1,168 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+            <div class="form-group" align="center">
+                <img src="~/Content/img/graficos.png" width="100" height="100">
+                <h3 class="text-center">PONTIFICIA UNIVERSIDAD CATOLICA DEL ECUADOR <br />SEDE-ESMERALDAS</h3>
+                <h4 class="text-center">GRÁFICOS</h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
+            <div class="panel panel-info panel-table">
+                <div class="panel-heading">EN ESPERA</div>
+                <div class="panel-body">
+                    <div id="curve_chart2" style="width: 100%; height: 300px;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
+            <div class="panel panel-info panel-table">
+                <div class="panel-heading">TERMINADO</div>
+                <div class="panel-body">
+                    <div id="curve_chart3" style="width: 100%; height: 300px;"></div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
+            <div class="panel panel-info panel-table">
+                <div class="panel-heading">Salas</div>
+                <div class="panel-body">
+                    <div id="piechart" style="width: 100%; height: 300px;"></div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12">
+            <div class="panel panel-info panel-table">
+                <div class="panel-heading">Estados</div>
+                <div class="panel-body">
+                    <div id="piechart1" style="width: 100%; height: 300px;"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+            $(document).ready(function () {
+                pastel();
+                linea();
+                linea2();
+                linea3();
+                linea_tiempo();
+                bar();
+            });
+            function pastel() {
+                google.charts.load('current', { 'packages': ['corechart'] });
+                google.charts.setOnLoadCallback(drawChart);
+                function drawChart() {
+                var data = google.visualization.arrayToDataTable(@Html.Raw(@ViewBag.pastel));
+                var options = {
+                title: 'Salas'
+             };
+             var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+             chart.draw(data, options);
+                }
+            }
+
+            function linea_tiempo() {
+                google.charts.load('current', { 'packages': ['timeline'] });
+                google.charts.setOnLoadCallback(drawChart);
+                function drawChart() {
+                    var container = document.getElementById('timeline');
+                    var chart = new google.visualization.Timeline(container);
+                    var dataTable = new google.visualization.DataTable();
+                    dataTable.addColumn({ type: 'string', id: 'President' });
+                    dataTable.addColumn({ type: 'date', id: 'Start' });
+                    dataTable.addColumn({ type: 'date', id: 'End' });
+                    dataTable.addRows(@Html.Raw(@ViewBag.lineatiempo));
+                    chart.draw(dataTable);
+                }
+            }
+
+            function linea() {
+                google.charts.load('current', { 'packages': ['corechart'] });
+                google.charts.setOnLoadCallback(drawChart);
+
+                function drawChart() {
+                    var data = google.visualization.arrayToDataTable(@Html.Raw(@ViewBag.linea));
+
+                    var options = {
+                        title: 'Solicitudes Aceptadas',
+                        curveType: 'function',
+                        legend: { position: 'bottom' }
+                    };
+
+                    var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+                    chart.draw(data, options);
+                }
+            }
+
+               function linea2() {
+                google.charts.load('current', { 'packages': ['corechart'] });
+                google.charts.setOnLoadCallback(drawChart);
+
+                function drawChart() {
+                    var data = google.visualization.arrayToDataTable(@Html.Raw(@ViewBag.linea2));
+
+                    var options = {
+                        title: 'Solicitudes Rechazadas',
+                        curveType: 'function',
+                        legend: { position: 'bottom' }
+                    };
+
+                    var chart = new google.visualization.LineChart(document.getElementById('curve_chart2'));
+
+                    chart.draw(data, options);
+                }
+            }
+
+               function linea3() {
+                google.charts.load('current', { 'packages': ['corechart'] });
+                google.charts.setOnLoadCallback(drawChart);
+
+                function drawChart() {
+                    var data = google.visualization.arrayToDataTable(@Html.Raw(@ViewBag.linea3));
+
+                    var options = {
+                        title: 'Solicitudes sin confirmar',
+                        curveType: 'function',
+                        legend: { position: 'bottom' }
+                    };
+
+                    var chart = new google.visualization.LineChart(document.getElementById('curve_chart3'));
+
+                    chart.draw(data, options);
+                }
+            }
+
+            function bar() {
+                   google.charts.load('current', { 'packages': ['corechart'] });
+                google.charts.setOnLoadCallback(drawChart);
+                function drawChart() {
+                var data = google.visualization.arrayToDataTable(@Html.Raw(@ViewBag.pastel1));
+                var options = {
+                title: 'Estado Solicitud'
+             };
+             var chart = new google.visualization.PieChart(document.getElementById('piechart1'));
+             chart.draw(data, options);
+                }
+            }
+
+    </script>
+</div>
+

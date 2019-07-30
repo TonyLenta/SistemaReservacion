@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LaboratorioReservaModelStoreContainer" CdmEntityContainer="LaboratorioReservaEntities">
+    <EntitySetMapping Name="Auditorias">
+      <EntityTypeMapping TypeName="LaboratorioReservaModel.Auditoria">
+        <MappingFragment StoreEntitySet="Auditoria">
+          <ScalarProperty Name="AuditoriId" ColumnName="AuditoriId" />
+          <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+          <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+          <ScalarProperty Name="Accion" ColumnName="Accion" />
+          <ScalarProperty Name="Creacion" ColumnName="Creacion" />
+          <ScalarProperty Name="Modificacion" ColumnName="Modificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Escuelas">
+      <EntityTypeMapping TypeName="LaboratorioReservaModel.Escuela">
+        <MappingFragment StoreEntitySet="Escuela">
+          <ScalarProperty Name="EscuelaId" ColumnName="EscuelaId" />
+          <ScalarProperty Name="NombreEscuela" ColumnName="NombreEscuela" />
+          <ScalarProperty Name="EstadoEscuela" ColumnName="EstadoEscuela" />
+          <ScalarProperty Name="Creacion" ColumnName="Creacion" />
+          <ScalarProperty Name="Modificacion" ColumnName="Modificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Materias">
+      <EntityTypeMapping TypeName="LaboratorioReservaModel.Materia">
+        <MappingFragment StoreEntitySet="Materia">
+          <ScalarProperty Name="MateriaId" ColumnName="MateriaId" />
+          <ScalarProperty Name="NivelId" ColumnName="NivelId" />
+          <ScalarProperty Name="EscuelaId" ColumnName="EscuelaId" />
+          <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+          <ScalarProperty Name="NombreMateria" ColumnName="NombreMateria" />
+          <ScalarProperty Name="EstadoMateria" ColumnName="EstadoMateria" />
+          <ScalarProperty Name="Creacion" ColumnName="Creacion" />
+          <ScalarProperty Name="Modificacion" ColumnName="Modificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Nivels">
+      <EntityTypeMapping TypeName="LaboratorioReservaModel.Nivel">
+        <MappingFragment StoreEntitySet="Nivel">
+          <ScalarProperty Name="NivelId" ColumnName="NivelId" />
+          <ScalarProperty Name="Nivel1" ColumnName="Nivel" />
+          <ScalarProperty Name="EstadoNivel" ColumnName="EstadoNivel" />
+          <ScalarProperty Name="Creacion" ColumnName="Creacion" />
+          <ScalarProperty Name="Modificacion" ColumnName="Modificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Restablecers">
+      <EntityTypeMapping TypeName="LaboratorioReservaModel.Restablecer">
+        <MappingFragment StoreEntitySet="Restablecer">
+          <ScalarProperty Name="RestablecerId" ColumnName="RestablecerId" />
+          <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+          <ScalarProperty Name="NuevaPassword" ColumnName="NuevaPassword" />
+          <ScalarProperty Name="Creacion" ColumnName="Creacion" />
+          <ScalarProperty Name="Modificacion" ColumnName="Modificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="LaboratorioReservaModel.Role">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="RolesId" ColumnName="RolesId" />
+          <ScalarProperty Name="Rol" ColumnName="Rol" />
+          <ScalarProperty Name="Creacion" ColumnName="Creacion" />
+          <ScalarProperty Name="Modificacion" ColumnName="Modificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Salas">
+      <EntityTypeMapping TypeName="LaboratorioReservaModel.Sala">
+        <MappingFragment StoreEntitySet="Salas">
+          <ScalarProperty Name="SalasId" ColumnName="SalasId" />
+          <ScalarProperty Name="Salas" ColumnName="Salas" />
+          <ScalarProperty Name="EstadoSalas" ColumnName="EstadoSalas" />
+          <ScalarProperty Name="Creacion" ColumnName="Creacion" />
+          <ScalarProperty Name="Modificacion" ColumnName="Modificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Solicituds">
+      <EntityTypeMapping TypeName="LaboratorioReservaModel.Solicitud">
+        <MappingFragment StoreEntitySet="Solicitud">
+          <ScalarProperty Name="SolicitudId" ColumnName="SolicitudId" />
+          <ScalarProperty Name="SalasId" ColumnName="SalasId" />
+          <ScalarProperty Name="MateriaId" ColumnName="MateriaId" />
+          <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+          <ScalarProperty Name="FechaFinal" ColumnName="FechaFinal" />
+          <ScalarProperty Name="HoraInicio" ColumnName="HoraInicio" />
+          <ScalarProperty Name="HoraFinal" ColumnName="HoraFinal" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+          <ScalarProperty Name="Confirmacion" ColumnName="Confirmacion" />
+          <ScalarProperty Name="EstadoSolicitud" ColumnName="EstadoSolicitud" />
+          <ScalarProperty Name="Creacion" ColumnName="Creacion" />
+          <ScalarProperty Name="Modificacion" ColumnName="Modificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="LaboratorioReservaModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+          <ScalarProperty Name="RolesId" ColumnName="RolesId" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+          <ScalarProperty Name="Token" ColumnName="Token" />
+          <ScalarProperty Name="ChatId" ColumnName="ChatId" />
+          <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+          <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+          <ScalarProperty Name="Restablecer" ColumnName="Restablecer" />
+          <ScalarProperty Name="EstadoSesion" ColumnName="EstadoSesion" />
+          <ScalarProperty Name="EstadoUsuario" ColumnName="EstadoUsuario" />
+          <ScalarProperty Name="Creacion" ColumnName="Creacion" />
+          <ScalarProperty Name="Modificacion" ColumnName="Modificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

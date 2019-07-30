@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d79ec9e3c62d4115b4ee94acdeb480e2" Name="Diagram1" ZoomLevel="95">
+        <EntityTypeShape EntityType="LaboratorioReservaModel.Auditoria" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaboratorioReservaModel.Escuela" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaboratorioReservaModel.Materia" Width="1.5" PointX="8.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaboratorioReservaModel.Nivel" Width="1.5" PointX="6" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaboratorioReservaModel.Restablecer" Width="1.5" PointX="5.25" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaboratorioReservaModel.Role" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaboratorioReservaModel.Sala" Width="1.5" PointX="8.25" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaboratorioReservaModel.Solicitud" Width="1.5" PointX="10.5" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaboratorioReservaModel.Usuario" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <AssociationConnector Association="LaboratorioReservaModel.FK__Auditoria__Usuar__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="LaboratorioReservaModel.FK__Materia__Escuela__6C190EBB" ManuallyRouted="false" />
+        <AssociationConnector Association="LaboratorioReservaModel.FK__Materia__NivelId__6B24EA82" ManuallyRouted="false" />
+        <AssociationConnector Association="LaboratorioReservaModel.FK__Materia__Usuario__6D0D32F4" ManuallyRouted="false" />
+        <AssociationConnector Association="LaboratorioReservaModel.FK__Solicitud__Mater__797309D9" ManuallyRouted="false" />
+        <AssociationConnector Association="LaboratorioReservaModel.FK__Restablec__Usuar__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="LaboratorioReservaModel.FK__Usuario__Modific__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="LaboratorioReservaModel.FK__Solicitud__Salas__787EE5A0" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
